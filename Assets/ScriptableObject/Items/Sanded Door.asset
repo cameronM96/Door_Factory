@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1eb18542d7d1814cbb0792a561a8419, type: 3}
+  m_Name: Sanded Door
+  m_EditorClassIdentifier: 
+  stackCap: 1
+  value: 7
+  icon: {fileID: 21300000, guid: 19f213ab8a6731f47ac183a7db761dcc, type: 3}
+  worldItemPrefab: {fileID: 6869996817424270962, guid: b69b89adab9eae54ead917e705b40f14,
+    type: 3}
+  type: 0

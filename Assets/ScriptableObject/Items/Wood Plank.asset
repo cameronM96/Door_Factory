@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1eb18542d7d1814cbb0792a561a8419, type: 3}
+  m_Name: Wood Plank
+  m_EditorClassIdentifier: 
+  stackCap: 6
+  value: 1
+  icon: {fileID: 21300000, guid: 39174e66b231c49408c1ffef4f24920d, type: 3}
+  worldItemPrefab: {fileID: 64725738604627638, guid: 028b9d8864e819540beca4aead48f40d,
+    type: 3}
+  type: 4

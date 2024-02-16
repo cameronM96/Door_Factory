@@ -3,7 +3,14 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Item
+  - Customer
+  - Interactable/Customer
+  - Interactable/Input
+  - Interactable/Output
+  - Interactable/AssemblyPlatform
+  - Interactable/Workbench
   layers:
   - Default
   - TransparentFX
@@ -11,7 +18,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - WorkBench
   - 
   - 
   - 
@@ -38,6 +45,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 46891673
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
@@ -49,4 +59,7 @@ TagManager:
     locked: 0
   - name: Layer 3
     uniqueID: 4189426099
+    locked: 0
+  - name: Top
+    uniqueID: 3704285317
     locked: 0

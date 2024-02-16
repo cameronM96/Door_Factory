@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33c07e372daacfc46b148ac8dd6ad567, type: 3}
+  m_Name: SawMill_Block
+  m_EditorClassIdentifier: 
+  inputs:
+  - itemData: {fileID: 11400000, guid: e46c5e86d11e7994ca5089e93afa09ac, type: 2}
+    quantity: 1
+    color: {r: 0, g: 0, b: 0, a: 0}
+  outputs:
+  - itemData: {fileID: 11400000, guid: 05f20d178b6e4af4cbec4fc8956edfa4, type: 2}
+    quantity: 3
+    color: {r: 0, g: 0, b: 0, a: 0}
+  craftingTime: 2

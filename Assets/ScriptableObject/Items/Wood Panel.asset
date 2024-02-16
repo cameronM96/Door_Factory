@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1eb18542d7d1814cbb0792a561a8419, type: 3}
+  m_Name: Wood Panel
+  m_EditorClassIdentifier: 
+  stackCap: 4
+  value: 2
+  icon: {fileID: 21300000, guid: b8f6a559777407843ac2e8346c096b3e, type: 3}
+  worldItemPrefab: {fileID: 3576974873132332814, guid: df7b4f46056d99549be4193dc12ab9ca,
+    type: 3}
+  type: 4
