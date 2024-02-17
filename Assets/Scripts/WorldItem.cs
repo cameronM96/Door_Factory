@@ -46,7 +46,9 @@ public class WorldItem : MonoBehaviour {
         if (myItems.GetType() == typeof(CombinedItems)) {
             Items[] components = myItems.GetItemComponents();
             for (int i = 0; i < components.Length; i++) {
+                transform.GetChild(i).GetComponent<SpriteRenderer>().sprite = components[i].GetItemData().icon;
                 transform.GetChild(i).GetComponent<SpriteRenderer>().color = components[i].GetColor();
+                
             }
         } else {
             for (int i = 0; i < myItems.GetItemData().stackCap; i++) {

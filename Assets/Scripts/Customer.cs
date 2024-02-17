@@ -40,6 +40,8 @@ public class Customer : MonoBehaviour {
     private Gradient questTimerGradient;
     [SerializeField]
     private float questTime = 60f;
+    [SerializeField]
+    private GameObject floatyText;
 
     [SerializeField]
     private bool questStart;
@@ -139,7 +141,7 @@ public class Customer : MonoBehaviour {
 
     public bool GiveItem(WorldItem item) {
         // Check if this thing matches what we want
-        if (item.GetItem().GetItemData() != desiredItems.GetItemData() || customerState > 1)
+        if (item.GetItem().GetItemData() != desiredItems.GetItemData() || customerState > 1 || !questStart)
             return false;   // Custom doesn't want this...
 
         Items[] recievedItems = item.GetItem().GetItemComponents();
@@ -150,6 +152,8 @@ public class Customer : MonoBehaviour {
 
             if (desiredItemComponent == null)
                 matchingItems += 2; // We wanted nothing here so...
+            else if (i > recievedItems.Length)
+                continue;
             else {
                 if (recievedItems[i].GetItemData() == desiredItemComponent)
                     ++matchingItems; // We got a match!
@@ -170,7 +174,11 @@ public class Customer : MonoBehaviour {
     private void CompleteQuest(float correctPercentage) {
         Debug.Log("Completed Quest with a " + (correctPercentage * 100f) + "% correctness");
         float reward = Mathf.CeilToInt(desiredItems.GetCombinedValue() * (1f + rewardMarkUpPerc));
-        GameManager.instance.Pay(Mathf.FloorToInt(reward * correctPercentage));
+        reward = Mathf.FloorToInt(reward * correctPercentage);
+        GameManager.instance.Pay((int)reward);
+        if ((int)reward == 0)
+            Instantiate(floatyText, transform.position, transform.rotation).GetComponent<FloatyText>().Initialise((int)reward);
+        
         questStart = false;
         customerState = 2;
         transform.localScale = new Vector3(-1, 1, 1);

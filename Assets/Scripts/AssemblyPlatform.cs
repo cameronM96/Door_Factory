@@ -101,7 +101,7 @@ public class AssemblyPlatform : MonoBehaviour {
         WorldItem completedDoor = Instantiate(doorPrefab).GetComponent<WorldItem>();
         completedDoor.transform.SetParent(transform.GetChild(0), true);
         //completedDoor.transform.localScale = Vector3.one;
-        completedDoor.transform.localPosition = Vector3.zero;
+        completedDoor.transform.position = transform.position;
         completedDoor.InitialiseWorldItem(new CombinedItems(completeDoorItemData, 1));
 
         // Get all the components of this combined item

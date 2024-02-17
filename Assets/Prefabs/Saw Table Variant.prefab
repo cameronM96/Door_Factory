@@ -221,7 +221,7 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: -590681979
   m_SortingOrder: 3
   m_TargetDisplay: 0
 --- !u!114 &7454508679267065281
@@ -672,12 +672,12 @@ PrefabInstance:
     - target: {fileID: 7967130260672541493, guid: 9425d7dfe3efa5649b832ff387452655,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 7967130260672541493, guid: 9425d7dfe3efa5649b832ff387452655,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7967130260672541493, guid: 9425d7dfe3efa5649b832ff387452655,
         type: 3}
@@ -854,6 +854,13 @@ MonoBehaviour:
   outputDisplays: []
   animator: {fileID: 1846869130765846429}
   progressBar: {fileID: 3684543851023798700}
+  recipesViewer: {fileID: 8578874844686126844}
+--- !u!1 &8578874844686126844 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7299093573675325948, guid: 9425d7dfe3efa5649b832ff387452655,
+    type: 3}
+  m_PrefabInstance: {fileID: 1316704590037260032}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8995149825358619701 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7967130260672541493, guid: 9425d7dfe3efa5649b832ff387452655,

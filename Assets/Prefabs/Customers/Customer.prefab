@@ -1671,6 +1671,8 @@ MonoBehaviour:
     m_NumColorKeys: 4
     m_NumAlphaKeys: 2
   questTime: 60
+  floatyText: {fileID: 756983480562250895, guid: 54a8af2ea02f41043bb81f47696dd4bc,
+    type: 3}
   questStart: 0
   waitTime: 0
   waitTimer: 0

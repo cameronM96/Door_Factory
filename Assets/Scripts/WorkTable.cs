@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -33,11 +34,17 @@ public class WorkTable : MonoBehaviour {
     [SerializeField]
     private Image progressBar;
 
+    [SerializeField]
+    private GameObject recipesViewer;
+
+
     private void Awake() {
         animator = GetComponent<Animator>();
         CheckIfReadyToCraft();
         if (progressBar != null )
             progressBar.GetComponentInParent<Canvas>().worldCamera = Camera.main;
+        InitialiseRecipeView();
+        ToggleRecipes(false);
     }
 
     private void Update() {
@@ -157,8 +164,6 @@ public class WorkTable : MonoBehaviour {
     }
 
     public WorldItem RemoveFromSlot(SlotType slotType, int index, WorldItem currentItems = null) {
-        /*if (crafting)
-            return null;*/
 
         WorldItem removedItem = null;
         WorldItem slotItem = (slotType == SlotType.input ? input : output)[index].item;
@@ -192,9 +197,11 @@ public class WorkTable : MonoBehaviour {
             outputItem.GetComponent<BoxCollider2D>().enabled = false;
             outputDisplays[i] = outputItem.gameObject;
             SpriteRenderer[] renderers = outputItem.GetComponentsInChildren<SpriteRenderer>();
-            //Debug.Log("shadowing " + renderers.Length + " items");
             foreach (SpriteRenderer renderer in renderers) {
                 renderer.color = new Color(renderer.color.r, renderer.color.g, renderer.color.b, 0.5f);
+                string[] layerName = renderer.sortingLayerName.Split(" ");
+                layerName[1] = (int.Parse(layerName[1]) - 1).ToString();
+                renderer.sortingLayerName = layerName[0] + " " + layerName[1];
             }
         }
     }
@@ -203,6 +210,33 @@ public class WorkTable : MonoBehaviour {
         for (int i = outputDisplays.Length - 1; i >= 0; i--) {
             Destroy(outputDisplays[i]);
         }
+    }
+
+    public void InitialiseRecipeView() {
+        for (int i = 0; i < recipesViewer.transform.childCount; i++) {
+            if (i >= recipes.Length) {
+                recipesViewer.transform.GetChild(i).gameObject.SetActive(false);
+                continue;
+            } else {
+                Transform recipeView = recipesViewer.transform.GetChild(i).transform;
+                // Input
+                recipeView.GetChild(0).GetComponent<Image>().sprite = recipes[i].inputs[0].GetItemData().icon;
+                //recipeView.GetChild(0).GetComponent<Image>().color = recipes[i].inputs[0].GetColor();
+                recipeView.GetChild(0).GetChild(0).GetComponentInChildren<TMP_Text>().text = "x" + recipes[i].inputs[0].GetItemQuantity();
+
+
+                // Output
+                recipeView.GetChild(2).GetComponent<Image>().sprite = recipes[i].outputs[0].GetItemData().icon;
+                //recipeView.GetChild(2).GetComponent<Image>().color = recipes[i].outputs[0].GetColor();
+                recipeView.GetChild(2).GetChild(0).GetComponentInChildren<TMP_Text>().text = "x" + recipes[i].outputs[0].GetItemQuantity();
+
+                recipesViewer.transform.GetChild(i).gameObject.SetActive(true);
+            }
+        }
+    }
+
+    public void ToggleRecipes(bool toggle) {
+        recipesViewer.gameObject.SetActive(toggle);
     }
     #endregion
 
@@ -238,7 +272,6 @@ public class WorkTable : MonoBehaviour {
                                     progress = 0;
                                     CreateOutputDisplay();
                                 }
-                                //Debug.Log("Recipe " + recipeIndex + " valid: " + recipes[recipeIndex].name);
                                 return true;
                             }
                             break;
@@ -249,7 +282,6 @@ public class WorkTable : MonoBehaviour {
         }
 
         // Could not find a valid recipe given the input
-        //Debug.Log("Currently no valid recipes");
         recipeIndex = -1;
         inputIndicies = new int[0];
         CancelCrafting();
@@ -279,7 +311,6 @@ public class WorkTable : MonoBehaviour {
                         break;
                     } else {
                         // Not enough room
-                        //Debug.Log("There is not enough space at the output to finish the recipe");
                         CancelCrafting();
                         return false;
                     }
@@ -288,11 +319,9 @@ public class WorkTable : MonoBehaviour {
         }
 
         if (validSpaces == recipes[recipeIndex].outputs.Length) {
-            //Debug.Log("There is enough space at the output to finish the recipe");
             return true;
         } else {
             // None of the spaces were valid
-            //Debug.Log("There is not enough space at the output to finish the recipe");
             CancelCrafting();
             return false;
         }

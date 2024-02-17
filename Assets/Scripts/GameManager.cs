@@ -58,6 +58,7 @@ public class GameManager : MonoBehaviour {
             instance = this;
 
         coinBag.text = "x" + money;
+        customerDisplay.text = "";
     }
 
     private void Update() {
@@ -66,7 +67,7 @@ public class GameManager : MonoBehaviour {
         if (dayTime > nextCustomerInterval && dayLength - dayTime > 20f)
             BirthCustomer();
 
-        clock.value = Mathf.Max(dayTime / dayLength, 1f);
+        clock.value = Mathf.Min(dayTime / dayLength, 1f);
         if (dayTime > dayLength && existingCustomers.Count <= 0) {
             // Day over
             EndDay();

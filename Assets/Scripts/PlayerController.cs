@@ -173,16 +173,16 @@ public class PlayerController : MonoBehaviour {
                 int desiredAmount = 1;
                 // Hold shift to pick up stack (maybe inverse this, i.e. hold shift to grab 1
                 if (Input.GetKey(KeyCode.LeftShift))
-                    desiredAmount = interactableItems[interactableItems.Count - 1].GetItem().GetItemQuantity();
+                    desiredAmount = myItems.GetItem().GetItemData().stackCap - myItems.GetItem().GetItemQuantity();
                 // Check if we want to pick up a matching item from a near by stack
                 for (int i = interactableItems.Count - 1; i >= 0; i--) {
-                    if (interactableItems[i].GetItem().GetItemData() == myItems.GetItem().GetItemData()) {
+                    // Pick it up if it's the same item & the same colour
+                    if (interactableItems[i].GetItem().GetItemData() == myItems.GetItem().GetItemData() && interactableItems[i].GetItem().GetColor() == myItems.GetItem().GetColor()) {
                         if (interactableItems[i].GetItem().GetItemQuantity() < myItems.GetItem().GetItemData().stackCap) {
                             foundStack = true;
                             Items takenItem = interactableItems[i].TakeItem(desiredAmount);
                             int excess = myItems.GiveItem(takenItem);
                             interactableItems[i].GiveItem(new Items(takenItem.GetItemData(), excess));
-                            Debug.Log("Picking up more " + myItems.GetItem().GetItemData().name);
                             break;
                         }
                     }
@@ -263,16 +263,22 @@ public class PlayerController : MonoBehaviour {
         //Debug.Log("Entered " + collision.name + "'s trigger");
         if (collision.GetComponent<WorldItem>() != null)
             interactableItems.Add(collision.GetComponent<WorldItem>());
-        else if (collision.tag.Contains("Interactable"))
+        else if (collision.tag.Contains("Interactable")) {
             interactableObjects.Add(collision.gameObject);
+            if (collision.tag.Contains("Workbench"))
+                collision.GetComponent<WorkTable>().ToggleRecipes(true);
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision) {
         if (collision.GetComponent<WorldItem>() != null)
             interactableItems.Remove(collision.GetComponent<WorldItem>());
         else if (collision.tag.Contains("Interactable")) {
-            if (interactableObjects.Contains(collision.gameObject))
+            if (interactableObjects.Contains(collision.gameObject)) {
                 interactableObjects.Remove(collision.gameObject);
+                if (collision.tag.Contains("Workbench"))
+                    collision.GetComponent<WorkTable>().ToggleRecipes(false);
+            }
         }
     }
 }

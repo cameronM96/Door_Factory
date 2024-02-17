@@ -289,7 +289,7 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: -590681979
   m_SortingOrder: 3
   m_TargetDisplay: 0
 --- !u!114 &8434471698213070680
@@ -715,7 +715,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   recipes:
   - {fileID: 11400000, guid: 02aa616cd6d8dd146b3276a88ec743ef, type: 2}
-  - {fileID: 11400000, guid: 19751d0d9fab5734dbd64b5830fba447, type: 2}
   input:
   - item: {fileID: 0}
     location: {fileID: 4776540401217559672}
@@ -731,6 +730,13 @@ MonoBehaviour:
   outputDisplays: []
   animator: {fileID: 0}
   progressBar: {fileID: 4261580371240628334}
+  recipesViewer: {fileID: 2399618531562913694}
+--- !u!1 &2399618531562913694 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7299093573675325948, guid: 9425d7dfe3efa5649b832ff387452655,
+    type: 3}
+  m_PrefabInstance: {fileID: 4901814950026110562}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3068728686546490711 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7967130260672541493, guid: 9425d7dfe3efa5649b832ff387452655,
